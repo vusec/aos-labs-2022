@@ -139,6 +139,8 @@ struct task *task_alloc(pid_t ppid)
 
 	/* You will set task->task_frame.rip later. */
 
+	/* LAB 4 TODO: initialize task->task_rb and task->task_mmap */
+
 	cprintf("[PID %5u] New task with PID %u\n",
 	        cur_task ? cur_task->task_pid : 0, task->task_pid);
 

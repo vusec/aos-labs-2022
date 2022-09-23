@@ -8,8 +8,8 @@ static void rotate_node(struct rb_tree *tree, struct rb_node *node,
 	struct rb_node *parent = node->parent;
 	struct rb_node *child = node->child[!dir];
 
-	if ((node->child[!dir] = node->child[dir])) {
-		node->child[dir]->parent = node;
+	if ((node->child[!dir] = child->child[dir])) {
+		child->child[dir]->parent = node;
 	}
 
 	child->child[dir] = node;
@@ -34,7 +34,7 @@ static struct rb_node *get_outermost(struct rb_node *node,
 	while (node->child[dir]) {
 		node = node->child[dir];
 	}
-	
+
 	return node;
 }
 
@@ -75,7 +75,7 @@ struct rb_node *rb_prev(struct rb_node *node)
 	return get_closest(node, RB_LEFT);
 }
 
-int rb_insert(struct rb_tree *tree, struct rb_node *node)
+int rb_balance(struct rb_tree *tree, struct rb_node *node)
 {
 	struct rb_node *parent, *grandparent, *uncle;
 	enum rb_dir dir;
@@ -256,4 +256,3 @@ int rb_replace(struct rb_tree *tree, struct rb_node *node,
 
 	return 0;
 }
-

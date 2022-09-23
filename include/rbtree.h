@@ -38,8 +38,7 @@ static inline void rb_node_init(struct rb_node *node)
 	memset(node, 0, sizeof *node);
 }
 
-int rb_insert(struct rb_tree *tree, struct rb_node *node);
+int rb_balance(struct rb_tree *tree, struct rb_node *node);
 int rb_remove(struct rb_tree *tree, struct rb_node *node);
 int rb_replace(struct rb_tree *tree, struct rb_node *node,
 	struct rb_node *new_node);
-
