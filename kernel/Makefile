@@ -71,7 +71,8 @@ KERNEL_BINFILES := \
 	user/nullwrite \
 	user/overflowhello \
 	user/softint \
-	user/testbss
+	user/testbss \
+	user/aslr
 
 # Only build files if they exist.
 KERNEL_SRCFILES := $(wildcard $(KERNEL_SRCFILES))
